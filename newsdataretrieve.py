@@ -1,3 +1,4 @@
+#!/usr/bin/env python2.7
 import psycopg2
 
 # queries:
@@ -28,7 +29,8 @@ query_3 = (
 def connect():
 
     try:
-        conn = psycopg2.connect("dbname=news")
+        # conn = psycopg2.connect("dbname=news")
+        conn = psycopg2.connect("dbname=postgres user=postgres")
         return conn
     except:
         print ("error in connecting to database")
@@ -39,7 +41,9 @@ def top_authors():
     conn = connect()
     cur = conn.cursor()
     cur.execute(query_2)
-    print(cur.fetchall())
+    print("Who are the most popular article authors of all time? \n")
+    for i in cur:
+        print(i[0]+" - "+str(i[1])+" views \n")
     conn.close()
 
 
@@ -48,7 +52,9 @@ def top_articles():
     conn = connect()
     cur = conn.cursor()
     cur.execute(query_1)
-    print(cur.fetchall())
+    print("What are the most popular three articles of all time? \n")
+    for i in cur:
+        print(i[0]+" - "+str(i[1])+" views \n")
     conn.close()
 
 
@@ -57,9 +63,14 @@ def high_error_requests():
     conn = connect()
     cur = conn.cursor()
     cur.execute(query_3)
-    print(cur.fetchall())
+    print("On which days did more than 1% of requests lead to errors? \n")
+    for i in cur:
+        print(str(i[0])+" - "+str(i[1])+"% errors \n")
     conn.close()
 
 top_articles()
+print("--------------------------------------------------------")
 top_authors()
+print("--------------------------------------------------------")
 high_error_requests()
+print("--------------------------------------------------------")

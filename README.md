@@ -1,13 +1,15 @@
 # log_analysis
 
-The third project in Udacity Full Stack Nanodegree
+## Description
 
-How to set up environment for the project
+In Udacity Full Stack Nanodegree program. Task number 3 is about a reporting using the logs. The program executes three given queries and print the results as plain text. The queries are about top authors, articles and error requests. Module psycopg2 is used for postegres.
+
+## How to set up environment for the project
 
 - install VirtualBox
 - install Vagrant
 
-How to Run 
+## How to Run 
 Use these commands:
 - vagrant up 
 - vagrant ssh
