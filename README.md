@@ -14,10 +14,11 @@ Use these commands:
 - psql -d news -f newsdata.sql
 
 Create the following views:
-
+```sql
 CREATE VIEW success_log AS SELECT * from log where status like '%200%';
-CREATE VIEW error_days AS SELECT date(time)  , count(status) as total, SUM(CASE WHEN status NOT LIKE '%200%' THEN 1 ELSE 0 END) as errors FROM log GROUP BY date(time);
 
+CREATE VIEW error_days AS SELECT date(time)  , count(status) as total, SUM(CASE WHEN status NOT LIKE '%200%' THEN 1 ELSE 0 END) as errors FROM log GROUP BY date(time);
+```
 
 Clone the repo
 Using Python 2.7
